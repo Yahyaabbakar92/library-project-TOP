@@ -53,3 +53,20 @@ label {
     border-radius: 12px;
     padding: 5px 20px;
 }
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    background-color: ghostwhite;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+thead {
+    background-color: #b35b39;
+    color: ghostwhite;
+}
+
+tbody {
+    text-align: center;
+}
