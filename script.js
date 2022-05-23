@@ -1,3 +1,5 @@
+const button = document.querySelector(".btn");
+const tableBody = document.querySelector("tbody");
 const myLibrary = [];
 
 // The constructor function
@@ -26,12 +28,27 @@ const addBookToLibrary = function (e) {
 
   // The variable that creates a book object
   let book = new Book(title, author, pages, read);
-  console.log(book);
+  // console.log(book);
 
   // The method to move the objects into the array
   myLibrary.push(book);
-  console.log(myLibrary);
+  // console.log(myLibrary);
+};
+
+const displayBooksToTable = function () {
+  let tableRow = document.createElement("tr");
+
+  myLibrary.forEach((newBook) => {
+    tableRow.innerHTML = `<td>${newBook.title}</td>
+                          <td>${newBook.author}</td>
+                          <td>${newBook.pages}</td>
+                          <td>${newBook.read}</td>`;
+  });
+  tableBody.appendChild(tableRow);
 };
 
 // The event listener
-document.querySelector(".btn").addEventListener("click", addBookToLibrary);
+button.addEventListener("click", (e) => {
+  addBookToLibrary(e);
+  displayBooksToTable();
+});
