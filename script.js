@@ -38,21 +38,33 @@ const addBookToLibrary = function (e) {
 
 const displayBooksToTable = function () {
   let tableRow = document.createElement("tr");
-
+  let deleteBtn = document.createElement("button");
+  deleteBtn.className = "delete";
+  deleteBtn.innerText = "Delete";
   myLibrary.forEach((newBook, index) => {
     tableRow.innerHTML = `<td>${newBook.title}</td>
                           <td>${newBook.author}</td>
                           <td>${newBook.pages}</td>
-                          <td>${newBook.read}</td>
-                          <td><button class="removeBtn">Remove<button></td>
-                          <td><button class="toggle">Edit<button></td>`;
+                          <td>${newBook.read}</td>`;
     tableRow.setAttribute("data-book", index);
+    tableRow.appendChild(deleteBtn);
   });
+
   tableBody.appendChild(tableRow);
+  deleteBtn.addEventListener("click", (e) => {
+    console.log(e);
+  });
 };
+
+const removeBookFromLibrary = function () {};
 
 // The event listener
 button.addEventListener("click", (e) => {
   addBookToLibrary(e);
   displayBooksToTable();
 });
+
+{
+  /* <td><button class="removeBtn">Remove<button></td>
+                          <td><button class="toggle">Edit<button></td> */
+}
