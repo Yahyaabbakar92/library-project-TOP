@@ -28,21 +28,25 @@ const addBookToLibrary = function (e) {
 
   // The variable that creates a book object
   let book = new Book(title, author, pages, read);
-  // console.log(book);
 
   // The method to move the objects into the array
   myLibrary.push(book);
-  // console.log(myLibrary);
+
+  // Clears the form for the next entries
+  document.querySelector("form").reset();
 };
 
 const displayBooksToTable = function () {
   let tableRow = document.createElement("tr");
 
-  myLibrary.forEach((newBook) => {
+  myLibrary.forEach((newBook, index) => {
     tableRow.innerHTML = `<td>${newBook.title}</td>
                           <td>${newBook.author}</td>
                           <td>${newBook.pages}</td>
-                          <td>${newBook.read}</td>`;
+                          <td>${newBook.read}</td>
+                          <td><button class="removeBtn">Remove<button></td>
+                          <td><button class="toggle">Edit<button></td>`;
+    tableRow.setAttribute("data-book", index);
   });
   tableBody.appendChild(tableRow);
 };
