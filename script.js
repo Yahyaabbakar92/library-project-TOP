@@ -38,33 +38,39 @@ const addBookToLibrary = function (e) {
 
 const displayBooksToTable = function () {
   let tableRow = document.createElement("tr");
-  let deleteBtn = document.createElement("button");
-  deleteBtn.className = "delete";
-  deleteBtn.innerText = "Delete";
+  let deleteButton = document.createElement("button");
+  // let editButton = document.createElement("button");
+
+  deleteButton.className = "delete";
+  deleteButton.innerText = "Delete";
+  // editButton.className = "toggle";
+  // editButton.innerText = "Edit";
   myLibrary.forEach((newBook, index) => {
     tableRow.innerHTML = `<td>${newBook.title}</td>
                           <td>${newBook.author}</td>
                           <td>${newBook.pages}</td>
                           <td>${newBook.read}</td>`;
     tableRow.setAttribute("data-book", index);
-    tableRow.appendChild(deleteBtn);
+    tableRow.appendChild(deleteButton);
+    // tableRow.appendChild(editButton);
   });
 
   tableBody.appendChild(tableRow);
-  deleteBtn.addEventListener("click", (e) => {
-    console.log(e);
-  });
+
+  // The event listener to delete a row from the table
+  deleteButton.addEventListener("click", removeBookFromLibrary);
 };
 
-const removeBookFromLibrary = function () {};
+const removeBookFromLibrary = function (e) {
+  if (e.target.classList.contains("delete")) {
+    e.target.parentElement.remove();
+  }
+  // The function to remove the book from the array
+  myLibrary.splice(e.target.parentElement.dataset, 1);
+};
 
-// The event listener
+// The event listener to add and display a book to the table
 button.addEventListener("click", (e) => {
   addBookToLibrary(e);
   displayBooksToTable();
 });
-
-{
-  /* <td><button class="removeBtn">Remove<button></td>
-                          <td><button class="toggle">Edit<button></td> */
-}
