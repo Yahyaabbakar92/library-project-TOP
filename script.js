@@ -11,10 +11,16 @@ class Book {
     this.read = read;
   }
 
-  // E.g of how a method is written in a constructor
-  // info() {
-  //   return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-  // }
+  changeReadStatus() {
+    if (this.read === true) {
+      const read = document.querySelector("#read");
+      read.setAttribute("checked", false);
+      // console.log(read.checked);
+    } else {
+      read.setAttribute("checked", true);
+      // console.log(read.checked);
+    }
+  }
 }
 
 // The function to add books to the array myLibrary
@@ -63,16 +69,21 @@ const displayBooksToTable = function () {
 
   // The event listener to delete a row from the table
   deleteButton.addEventListener("click", removeBookFromLibrary);
+  toggleButton.addEventListener("click", () => {
+    let books = new Book(title, author, pages, read);
+    return books.changeReadStatus();
+  });
 };
 
+// Need to fix the functionality to remove the correct book from the array
 const removeBookFromLibrary = function (e) {
   if (e.target.classList.contains("delete")) {
-    // e.target.parentElement.parentElement.remove();
-    console.log(e.target.parentElement.parentElement.dataset);
+    e.target.parentElement.parentElement.remove();
+    // console.log(e.target.parentElement.parentElement.dataset);
   }
   // The function to remove the book from the array
-  // myLibrary.splice(e.target.parentElement.parentElement.dataset, 1);
-  console.log(myLibrary);
+  myLibrary.splice(e.target.parentElement.parentElement.dataset, 1);
+  // console.log(myLibrary);
 };
 
 // The event listener to add and display a book to the table
