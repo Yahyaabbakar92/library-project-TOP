@@ -26,6 +26,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
     font-family: 'Raleway', sans-serif;
+    background-color: gainsboro;
 }
 ol, ul {
 	list-style: none;
@@ -58,7 +59,7 @@ form {
     margin: 0 auto;
     font-weight: 400;
     font-size: 1.25rem;
-    border:2px solid #ccc;
+    border:2px solid rgb(129, 125, 125);
     border-radius: 10px;
     width: 60%;
 }
