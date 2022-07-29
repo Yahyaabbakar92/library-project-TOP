@@ -55,7 +55,6 @@ h1 {
 }
 
 form {
-    /* text-align: center; */
     margin: 0 auto;
     font-weight: 400;
     font-size: 1.25rem;
@@ -73,7 +72,6 @@ form li + li {
   }
 
 label {
-    /* Uniform size & alignment */
     display: inline-block;
     width: 100px;
     text-align: right;
@@ -84,10 +82,12 @@ label {
     box-sizing: border-box;
     border: 1px solid #999;
     border-radius: 8px;
+    padding: 5px;
+    font-size: 1rem;
   }
 
   input[type=radio] {
-    width: 20px;
+    width: 30px;
   }
 
   input:focus {
@@ -95,7 +95,6 @@ label {
   }
 
   .button {
-    /* padding-left: 108px; */
     text-align: center;
   }
 
