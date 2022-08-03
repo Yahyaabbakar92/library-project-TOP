@@ -23,8 +23,11 @@ function addBookToLibrary() {
   myLibrary.push(theHobbit, harryPotter, atomicHabits);
 }
 addBookToLibrary();
-console.log(myLibrary);
 
-// console.log(theHobbit);
-// console.log(harryPotter);
-// console.log(atomicHabits);
+function displayBook() {
+  myLibrary.forEach((book) => {
+    console.log(book);
+  });
+}
+
+displayBook();
