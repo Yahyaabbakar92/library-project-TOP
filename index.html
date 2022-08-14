@@ -31,21 +31,31 @@
             <label for="pages">Pages:</label>
             <input type="tel" name="numberOfPages" id="pages" />
           </li>
-          <div class="radioInput">
-            <li>
-              <label for="read">Read</label>
-              <input type="radio" name="bookRead" id="read" />
-            </li>
-            <li>
-              <label for="notRead">Not read</label>
-              <input type="radio" name="bookRead" id="notRead" />
-            </li>
+          <div class="selectOptions">
+            <select name="readOrNotRead" id="read">
+              <option value="Read">Read</option>
+              <option value="Not Read">Not Read</option>
+            </select>
           </div>
           <li class="button">
             <button id="btn" type="submit">Add Book</button>
           </li>
         </ul>
       </form>
+
+      <div class="divTable">
+        <table id="libraryTable">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>No of Pages</th>
+              <th>Read</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
