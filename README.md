@@ -21,4 +21,6 @@ After filling out the info on the form, when the "Add Book" button is clicked A 
 The table will show the the title, author, number of pages, whether the book has been read and a button to delete the book from
 the table.
 
+- The table will be displayed when the class is added to it dynamically via JS
+
 - When button is clicked, the new book object is instantiated and added to myLibrary array
