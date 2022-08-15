@@ -147,3 +147,11 @@ label {
     background: #ffffff;
     color: #313030;
   } 
+
+  .btnHolders {
+    width: 150px; 
+  }
+
+  #removeBtn {
+    margin-left: 16px;
+  }
