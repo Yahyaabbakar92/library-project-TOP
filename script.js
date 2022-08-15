@@ -5,47 +5,14 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function () {
-    return `${title} by ${author}, ${pages} pages, ${read}`;
-  };
 }
 
-// The function that removes a row from the table
-function removeRow(e) {
-  let table = document.getElementById("libraryTable");
-  table.deleteRow(e.target.parentNode.rowIndex);
-}
-
-function addBookToTable() {
-  // The variables that store input from the form
-  let title = document.getElementById("title").value;
-  let author = document.getElementById("author").value;
-  let pages = document.getElementById("pages").value;
-  let read = document.getElementById("read").value;
-
-  // Creating a button element and giving it an id, click event and text
-  let removeButton = document.createElement("button");
-  removeButton.setAttribute("id", "removeBtn");
-  removeButton.innerText = "Remove Book";
-  removeButton.addEventListener("click", removeRow);
-
-  let tbody = document.querySelector("tbody");
-  let tr = document.createElement("tr");
-  let bookArray = [title, author, pages, read]; // The array that stores input form data
-
-  // Using the forEach loop to create a table data cell for each input and appending the cells to the created row outside the loop
-  bookArray.forEach((book) => {
-    let td = document.createElement("td");
-    td.innerText = book;
-    tr.appendChild(td);
-  });
-
-  // Appending the removeButton to the row as well as the row to the table body
-  tr.appendChild(removeButton);
-  tbody.appendChild(tr);
-
-  // console.log(myLibrary[0]);
-}
+// Book.prototype.toggleStatus = function () {
+//   let toggleButton = document.getElementById("toggle");
+//   toggleButton.addEventListener("click", (e) => {
+//     console.log(e);
+//   });
+// };
 
 function addBookToLibrary(e) {
   // The preventDefault() method here cancels the form from being submitted
@@ -65,6 +32,53 @@ function addBookToLibrary(e) {
 
   // Invoking the function that creates a row and adds it to the table
   addBookToTable();
+}
+
+// The function that adds a book row to the table
+function addBookToTable() {
+  // The variables that store input from the form
+  let title = document.getElementById("title").value;
+  let author = document.getElementById("author").value;
+  let pages = document.getElementById("pages").value;
+  let read = document.getElementById("read").value;
+
+  let removeButton = document.createElement("button");
+  let removeButtonCell = document.createElement("td");
+  removeButton.setAttribute("id", "removeBtn");
+  removeButton.innerText = "Remove Book";
+  removeButton.addEventListener("click", removeRow);
+
+  let toggleButton = document.createElement("button");
+  let toggleButtonCell = document.createElement("td");
+  toggleButton.setAttribute("id", "toggle");
+  toggleButton.innerText = "Book Status";
+  // toggleButton.addEventListener("click", toggleStatus);
+
+  let tbody = document.querySelector("tbody");
+  let tr = document.createElement("tr");
+  let bookArray = [title, author, pages, read]; // The array that stores input form data
+
+  // Using the forEach loop to create a table data cell for each input and appending the cells to the created row outside the loop
+  bookArray.forEach((book) => {
+    let td = document.createElement("td");
+    td.innerText = book;
+    tr.appendChild(td);
+  });
+
+  // Appending the removeButton and toggleButton to the td and row. As well as the row to the table body
+  removeButtonCell.appendChild(removeButton);
+  toggleButtonCell.appendChild(toggleButton);
+  tr.appendChild(removeButtonCell);
+  tr.appendChild(toggleButtonCell);
+  tbody.appendChild(tr);
+
+  // console.log(myLibrary[0]);
+}
+
+// The function that removes a row from the table
+function removeRow(e) {
+  let table = document.getElementById("libraryTable");
+  table.deleteRow(e.target.parentNode.parentNode.rowIndex);
 }
 
 let addBookButton = document.getElementById("btn");
