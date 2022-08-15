@@ -16,6 +16,7 @@ Using objects and object constructors to organize code and create a library app
 ## Things I learned
 
 - Using methods that can delete rows from tables and return an index row of a table
+- When creating a button element and want to append to a table row, append it first to a table cell (td) and then the table cell to the row
 
 ## Thought process
 
