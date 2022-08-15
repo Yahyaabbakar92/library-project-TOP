@@ -15,6 +15,8 @@ Using objects and object constructors to organize code and create a library app
 
 ## Things I learned
 
+- Using methods that can delete rows from tables and return an index row of a table
+
 ## Thought process
 
 After filling out the info on the form, when the "Add Book" button is clicked A table will be displayed on the window.
