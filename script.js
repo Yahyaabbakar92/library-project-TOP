@@ -7,12 +7,19 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-// Book.prototype.toggleStatus = function () {
-//   let toggleButton = document.getElementById("toggle");
-//   toggleButton.addEventListener("click", (e) => {
-//     console.log(e);
-//   });
-// };
+Book.prototype.toggleStatus = function () {
+  // Selecting all the buttons with a class of toggle
+  let toggleButtons = document.querySelectorAll(".toggle");
+  let readStatus = document.querySelectorAll(".readStatus");
+
+  for (const status of readStatus) {
+    if (status.innerText == "Not Read") {
+      status.innerText == "Read";
+    } else if (status.innerText == "Read") {
+      status.innerText == "Not Read";
+    }
+  }
+};
 
 function addBookToLibrary(e) {
   // The preventDefault() method here cancels the form from being submitted
@@ -32,6 +39,7 @@ function addBookToLibrary(e) {
 
   // Invoking the function that creates a row and adds it to the table
   addBookToTable();
+  // newBook.toggleStatus();
 }
 
 // The function that adds a book row to the table
@@ -42,17 +50,21 @@ function addBookToTable() {
   let pages = document.getElementById("pages").value;
   let read = document.getElementById("read").value;
 
+  // let newBook = new Book(title, author, pages, read);
+
   let removeButton = document.createElement("button");
   let removeButtonCell = document.createElement("td");
-  removeButton.setAttribute("id", "removeBtn");
+  removeButton.setAttribute("class", "removeBtn");
   removeButton.innerText = "Remove Book";
   removeButton.addEventListener("click", removeRow);
 
   let toggleButton = document.createElement("button");
   let toggleButtonCell = document.createElement("td");
-  toggleButton.setAttribute("id", "toggle");
+  toggleButton.setAttribute("class", "toggle");
   toggleButton.innerText = "Book Status";
-  // toggleButton.addEventListener("click", toggleStatus);
+  // toggleButton.addEventListener("click", () => {
+  //   console.log(newBook);
+  // });
 
   let tbody = document.querySelector("tbody");
   let tr = document.createElement("tr");
@@ -72,7 +84,8 @@ function addBookToTable() {
   tr.appendChild(toggleButtonCell);
   tbody.appendChild(tr);
 
-  // console.log(myLibrary[0]);
+  tr.children[3].setAttribute("class", "readStatus");
+  console.log(tr.children[3]);
 }
 
 // The function that removes a row from the table
