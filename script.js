@@ -37,7 +37,6 @@ function addBookToLibrary(e) {
 
   // Invoking the function that creates a row and adds it to the table
   addBookToTable();
-  // newBook.toggleStatus();
 }
 
 // The function that adds a book row to the table
@@ -89,7 +88,7 @@ function addBookToTable() {
 // The function that removes a row from the table
 function removeRow(e) {
   let table = document.getElementById("libraryTable");
-  table.deleteRow(e.target.parentNode.parentNode.rowIndex);
+  table.deleteRow(e.target.parentNode.parentNode.rowIndex); // Using built-in properties to access the row nodes and index of the node to delete the row
 }
 
 let addBookButton = document.getElementById("btn");
