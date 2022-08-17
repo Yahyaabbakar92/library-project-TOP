@@ -8,15 +8,13 @@ function Book(title, author, pages, read) {
 }
 
 Book.prototype.toggleStatus = function () {
-  // Selecting all the buttons with a class of toggle
-  let toggleButtons = document.querySelectorAll(".toggle");
   let readStatus = document.querySelectorAll(".readStatus");
 
-  for (const status of readStatus) {
-    if (status.innerText == "Not Read") {
-      status.innerText == "Read";
-    } else if (status.innerText == "Read") {
-      status.innerText == "Not Read";
+  for (const bookStatus of readStatus) {
+    if (bookStatus.innerText === "Not Read") {
+      bookStatus.innerText = "Read";
+    } else if (bookStatus.innerText === "Read") {
+      bookStatus.innerText = "Not Read";
     }
   }
 };
@@ -50,24 +48,25 @@ function addBookToTable() {
   let pages = document.getElementById("pages").value;
   let read = document.getElementById("read").value;
 
-  // let newBook = new Book(title, author, pages, read);
+  // Instantiating a book
+  let newBook = new Book(title, author, pages, read);
 
+  // Creating a remove/delete book button and a table cell for it. Giving a class to the button and adding an event listener to the button
   let removeButton = document.createElement("button");
   let removeButtonCell = document.createElement("td");
   removeButton.setAttribute("class", "removeBtn");
   removeButton.innerText = "Remove Book";
   removeButton.addEventListener("click", removeRow);
 
+  // Creating a toggle read status button and a table cell for it. Adding a class, inner text value and an event listener to the button.
   let toggleButton = document.createElement("button");
   let toggleButtonCell = document.createElement("td");
   toggleButton.setAttribute("class", "toggle");
-  toggleButton.innerText = "Book Status";
-  // toggleButton.addEventListener("click", () => {
-  //   console.log(newBook);
-  // });
+  toggleButton.innerText = "Toggle Status";
+  toggleButton.addEventListener("click", newBook.toggleStatus);
 
   let tbody = document.querySelector("tbody");
-  let tr = document.createElement("tr");
+  let tr = document.createElement("tr"); // Creating the row for the table body
   let bookArray = [title, author, pages, read]; // The array that stores input form data
 
   // Using the forEach loop to create a table data cell for each input and appending the cells to the created row outside the loop
@@ -84,8 +83,7 @@ function addBookToTable() {
   tr.appendChild(toggleButtonCell);
   tbody.appendChild(tr);
 
-  tr.children[3].setAttribute("class", "readStatus");
-  console.log(tr.children[3]);
+  tr.children[3].setAttribute("class", "readStatus"); // Giving a class attribute to the table data that contains info on whether the book is read or not.
 }
 
 // The function that removes a row from the table
