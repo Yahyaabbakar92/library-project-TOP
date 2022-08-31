@@ -31,11 +31,11 @@
             <label for="pages">Pages:</label>
             <input type="tel" name="numberOfPages" id="pages" />
           </li>
-          <div class="selectOptions">
-            <select name="readOrNotRead" id="read">
-              <option value="Read">Read</option>
-              <option value="Not Read">Not Read</option>
-            </select>
+          <div class="radioOptions">
+            <input type="radio" name="readValue" id="read" value="Read">
+            <label for="read">Read</label>
+            <input type="radio" name="readValue" id="notRead" value="Not Read">
+            <label for="notRead">Not Read</label>
           </div>
           <li class="button">
             <button id="btn" type="submit">Add Book</button>
