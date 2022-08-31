@@ -7,18 +7,6 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.toggleStatus = function () {
-  let readStatus = document.querySelectorAll(".readStatus");
-
-  for (const bookStatus of readStatus) {
-    if (bookStatus.innerText === "Not Read") {
-      bookStatus.innerText = "Read";
-    } else if (bookStatus.innerText === "Read") {
-      bookStatus.innerText = "Not Read";
-    }
-  }
-};
-
 function addBookToLibrary(e) {
   // The preventDefault() method here cancels the form from being submitted
   e.preventDefault();
@@ -27,7 +15,16 @@ function addBookToLibrary(e) {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pages = document.getElementById("pages").value;
-  let read = document.getElementById("read").value;
+  let radioValues = document.querySelectorAll("input[name=readValue]");
+
+  // The variable that stores the read value of radio inputs
+  let read;
+
+  for (const radioValue of radioValues) {
+    if (radioValue.checked) {
+      read = radioValue.value; // If the input value is checked, then store the input value into the read variable
+    }
+  }
 
   // Instantiating a book using the values from the form
   let newBook = new Book(title, author, pages, read);
@@ -45,7 +42,16 @@ function addBookToTable() {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pages = document.getElementById("pages").value;
-  let read = document.getElementById("read").value;
+  let radioValues = document.querySelectorAll("input[name=readValue]");
+
+  // The variable that stores the read value of radio inputs
+  let read;
+
+  for (const radioValue of radioValues) {
+    if (radioValue.checked) {
+      read = radioValue.value; // If the input value is checked, then store the input value into the read variable
+    }
+  }
 
   // Instantiating a book
   let newBook = new Book(title, author, pages, read);
@@ -90,6 +96,32 @@ function removeRow(e) {
   let table = document.getElementById("libraryTable");
   table.deleteRow(e.target.parentNode.parentNode.rowIndex); // Using built-in properties to access the row nodes and index of the node to delete the row
 }
+
+Book.prototype.toggleStatus = function () {
+  let radioValues = document.querySelectorAll("input[name=readValue]");
+  let td = document.querySelectorAll("td[class=readStatus]");
+
+  let readValue;
+  let tableDataValue;
+
+  for (const radioValue of radioValues) {
+    if (radioValue.checked) {
+      readValue = radioValue.value;
+    }
+  }
+  for (const tdValue of td) {
+    tableDataValue = tdValue;
+  }
+
+  if (readValue === "Not Read") {
+    tableDataValue.innerText = "Read";
+  } else if (readValue === "Read") {
+    tableDataValue.innerText = "Not Read";
+  }
+
+  // console.log(read);
+  // console.log(tdv.innerText);
+};
 
 let addBookButton = document.getElementById("btn");
 addBookButton.addEventListener("click", addBookToLibrary);
