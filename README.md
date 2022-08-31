@@ -31,3 +31,11 @@ the table.
 - After the form is filled, clicking the add book button adds a new row below to the displayed header of the table
 - Clicking remove book will remove the row from the table
 - Clicking toggle status will switch the read value of the row it was clicked
+
+- if element contains ???x
+
+## Need to Refactor
+
+- I was able to get the toggle button to change the book status. However, it only works when clicked once and doesn't have any effect on a second click. Also it works after one book is added and the button is clicked after the book is added. If multiple books are added, then the toggle button only changes status of the last book added and not any other book.
+
+- I also have to style my radio inputs and make the app responsive
