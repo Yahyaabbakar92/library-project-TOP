@@ -2,10 +2,10 @@
 
 Library project for theodinproject.com
 
-Live: ( )
+Live: ( https://yahyaabbakar92.github.io/library-project-TOP/ )
 
 Date started: July 28, 2022
-Date completed:
+Date completed: August 31, 2022
 
 ## Objectives
 
@@ -39,3 +39,5 @@ the table.
 - I was able to get the toggle button to change the book status. However, it only works when clicked once and doesn't have any effect on a second click. Also it works after one book is added and the button is clicked after the book is added. If multiple books are added, then the toggle button only changes status of the last book added and not any other book.
 
 - I also have to style my radio inputs and make the app responsive
+
+- I also need to add a screenshot to the README
